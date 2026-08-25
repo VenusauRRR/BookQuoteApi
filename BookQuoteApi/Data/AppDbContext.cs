@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookQuoteApi.Data
 {
-    public class AppDatabase
+    public class AppDbContext:DbContext
     {
-        public AppDatabase(DbContextOptions<AppDatabase> options)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
         {
         }
