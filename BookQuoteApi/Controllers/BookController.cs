@@ -39,8 +39,8 @@ public class BookController(AppDbContext db):ControllerBase
         return await _context.Books.ToListAsync();
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Book>> GetBook(int id)
+    [HttpGet("get/{id}")]
+    public async Task<ActionResult<Book>> GetBook(Guid id)
     {
         var book = await _context.Books.FindAsync(id);
 
@@ -52,7 +52,7 @@ public class BookController(AppDbContext db):ControllerBase
         return book;
     }
 
-    [HttpPost]
+    [HttpPost("add")]
     public async Task<ActionResult<Book>> CreateBook(Book book)
     {
         _context.Books.Add(book);
@@ -64,8 +64,8 @@ public class BookController(AppDbContext db):ControllerBase
             book);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateBook(int id, Book book)
+    [HttpPut("update/{id}")]
+    public async Task<IActionResult> UpdateBook(Guid id, Book book)
     {
         if (id != book.Id)
         {
@@ -79,8 +79,8 @@ public class BookController(AppDbContext db):ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteBook(int id)
+    [HttpDelete("delete/{id}")]
+    public async Task<IActionResult> DeleteBook(Guid id)
     {
         var book = await _context.Books.FindAsync(id);
 
