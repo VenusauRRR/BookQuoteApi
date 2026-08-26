@@ -76,7 +76,7 @@ public class BookController(AppDbContext db):ControllerBase
 
         await _context.SaveChangesAsync();
 
-        return Ok("Book updated");
+        return Ok(book);
     }
 
     [HttpDelete("delete/{id}")]
@@ -92,6 +92,6 @@ public class BookController(AppDbContext db):ControllerBase
         _context.Books.Remove(book);
         await _context.SaveChangesAsync();
 
-        return Ok("Book deleted");
+        return Ok(book);
     }
 }
