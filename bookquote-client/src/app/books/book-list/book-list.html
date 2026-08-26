@@ -1,5 +1,11 @@
-<p>book-list works!</p>
-
 <h1>My Books :)</h1>
 
 <p>Number of books: {{ books.length }}</p>
+
+@for (book of books; track book.id) {
+  <div>
+    <h2>{{ book.title }}</h2>
+    <p>Author: {{ book.author }}</p>
+    <p>Published: {{ book.publicationDate }}</p>
+  </div>
+}

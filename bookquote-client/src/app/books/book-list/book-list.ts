@@ -4,7 +4,6 @@ import { Book } from '../../models/book';
 
 @Component({
   selector: 'app-book-list',
-  imports: [],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
