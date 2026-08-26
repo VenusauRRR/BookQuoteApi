@@ -16,11 +16,19 @@ export class BookService {
     return this.http.get<Book[]>(this.apiUrl);
   }
 
+  getBookById(bookId: string): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/get/${bookId}`);
+  }
+
   addBook(book: CreateBook): Observable<CreateBook> {
     return this.http.post<CreateBook>(`${this.apiUrl}/add`, book);
   }
 
   deleteBook(bookId: string): Observable<string> {
     return this.http.delete<string>(`${this.apiUrl}/delete/${bookId}`);
+  }
+
+  updateBook(book: Book): Observable<string> {
+    return this.http.put<string>(`${this.apiUrl}/update/${book.id}`, book);
   }
 }

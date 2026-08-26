@@ -8,5 +8,6 @@
     <p>Author: {{ book.author }}</p>
     <p>Published: {{ book.publicationDate }}</p>
     <button type="button" (click)="deleteBook(book.id)">Delete</button>
+    <button type="button" (click)="updateBook(book)">Edit</button>
   </div>
 }

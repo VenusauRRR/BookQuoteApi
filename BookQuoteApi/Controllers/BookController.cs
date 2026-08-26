@@ -40,7 +40,7 @@ public class BookController(AppDbContext db):ControllerBase
     }
 
     [HttpGet("get/{id}")]
-    public async Task<ActionResult<Book>> GetBook(Guid id)
+    public async Task<ActionResult<Book>> GetBookById(Guid id)
     {
         var book = await _context.Books.FindAsync(id);
 
@@ -76,7 +76,7 @@ public class BookController(AppDbContext db):ControllerBase
 
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok("Book updated");
     }
 
     [HttpDelete("delete/{id}")]
@@ -92,6 +92,6 @@ public class BookController(AppDbContext db):ControllerBase
         _context.Books.Remove(book);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok("Book deleted");
     }
 }

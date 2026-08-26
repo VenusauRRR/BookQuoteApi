@@ -1,8 +1,12 @@
 <p>book-form works!</p>
 
-<h1>Add New Book</h1>
+<h1>{{ bookId ? 'Edit' : 'Add' }} Book</h1>
 
-<form (ngSubmit)="addBook()">
+<form (ngSubmit)="saveBook()">
+  <label for="bookId" [textContent]="this.bookId">BookId:</label>
+
+  <br />
+
   <label for="title">Title:</label>
   <input id="title" type="text" name="title" [(ngModel)]="book.title" />
 
@@ -23,5 +27,5 @@
 
   <br />
 
-  <button type="submit">Submit</button>
+  <button type="submit">{{ bookId ? 'Update' : 'Add' }}</button>
 </form>

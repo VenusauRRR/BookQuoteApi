@@ -11,12 +11,8 @@ export const routes: Routes = [
     path: 'books/add',
     component: BookForm,
   },
-  //   {
-  //     path: 'books/update',
-  //     component: BookForm,
-  //   },
-  //   {
-  //     path: 'books/delete',
-  //     component: BookList,
-  //   },
+  {
+    path: 'books/update/:bookId',
+    component: BookForm,
+  },
 ];

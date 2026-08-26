@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../services/book-service';
 import { Book } from '../../models/book';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -10,7 +11,10 @@ import { Book } from '../../models/book';
 export class BookList implements OnInit {
   books: Book[] = [];
 
-  constructor(private bookService: BookService) {}
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     console.log('booklist added');
@@ -29,5 +33,9 @@ export class BookList implements OnInit {
         console.error('Error deleting book:', error);
       },
     });
+  }
+
+  updateBook(book: Book): void {
+    this.router.navigate(['/books/update', book.id]);
   }
 }
