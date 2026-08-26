@@ -1,20 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../services/book-service';
 import { Book } from '../../models/book';
+import { FormsModule } from '@angular/forms';
+import { CreateBook } from '../../models/create-book';
 @Component({
   selector: 'app-book-form',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './book-form.html',
   styleUrl: './book-form.css',
 })
-export class BookForm implements OnInit {
-  books: Book[] = [];
+export class BookForm {
+  book: CreateBook = {
+    title: '',
+    author: '',
+    publicationDate: '',
+  };
 
   constructor(private bookService: BookService) {}
 
-  ngOnInit(): void {
-    this.bookService.getBooks().subscribe((books) => {
-      this.books = books;
+  addBook(): void {
+    this.bookService.addBook(this.book).subscribe({
+      next: (result) => {
+        console.log('Book created:', result);
+      },
+      error: (error) => {
+        console.error('Error creating book:', error);
+      },
     });
   }
 }

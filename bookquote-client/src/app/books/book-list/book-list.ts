@@ -19,4 +19,15 @@ export class BookList implements OnInit {
       this.books = books;
     });
   }
+
+  deleteBook(bookId: string): void {
+    this.bookService.deleteBook(bookId).subscribe({
+      next: (result) => {
+        console.log('Book deleted:', result);
+      },
+      error: (error) => {
+        console.error('Error deleting book:', error);
+      },
+    });
+  }
 }
