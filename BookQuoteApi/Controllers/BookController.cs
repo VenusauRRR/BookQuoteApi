@@ -59,7 +59,7 @@ public class BookController(AppDbContext db):ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(
-            nameof(GetBook),
+            nameof(GetBookById),
             new { id = book.Id },
             book);
     }
