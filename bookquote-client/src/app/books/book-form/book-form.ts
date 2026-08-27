@@ -4,6 +4,8 @@ import { Book } from '../../models/book';
 import { FormsModule } from '@angular/forms';
 import { CreateBook } from '../../models/create-book';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-book-form',
   imports: [FormsModule],
@@ -21,6 +23,7 @@ export class BookForm implements OnInit {
   constructor(
     private bookService: BookService,
     private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +51,7 @@ export class BookForm implements OnInit {
 
   saveBook(): void {
     this.bookId ? this.updateBook() : this.addBook();
+    this.router.navigate(['/books']);
   }
 
   addBook(): void {

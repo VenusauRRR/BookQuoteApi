@@ -27,12 +27,22 @@ export class BookList implements OnInit {
   deleteBook(bookId: string): void {
     this.bookService.deleteBook(bookId).subscribe({
       next: (result) => {
-        console.log('Book deleted:', result);
+            console.log('Book deleted:', result);
+        this.bookService.getBooks().subscribe({
+          next: (books) => {
+            this.books = books;
+          },
+          error: (error) => {
+            console.error('Error loading books:', error);
+          },
+        });
       },
       error: (error) => {
         console.error('Error deleting book:', error);
       },
     });
+
+    this.router.navigate(['/books']);
   }
 
   updateBook(book: Book): void {
