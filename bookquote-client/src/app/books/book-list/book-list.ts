@@ -45,6 +45,10 @@ export class BookList implements OnInit {
     this.router.navigate(['/books']);
   }
 
+  addBook(): void {
+    this.router.navigate(['/books/add']);
+  }
+
   updateBook(book: Book): void {
     this.router.navigate(['/books/update', book.id]);
   }
