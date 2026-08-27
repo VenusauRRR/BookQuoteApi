@@ -18,10 +18,16 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Register AppDbContext BEFORE builder.Build()
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+// Apply migrations
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -33,11 +39,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
-
 app.UseHttpsRedirection();
 
 app.UseCors("AllowAngular");
