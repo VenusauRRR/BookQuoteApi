@@ -51,13 +51,13 @@ export class BookForm implements OnInit {
 
   saveBook(): void {
     this.bookId ? this.updateBook() : this.addBook();
-    this.router.navigate(['/books']);
   }
 
   addBook(): void {
     this.bookService.addBook(this.book).subscribe({
       next: (result) => {
         console.log('Book created:', result);
+        this.router.navigate(['/books']);
       },
       error: (error) => {
         console.error('Error creating book:', error);
@@ -76,6 +76,7 @@ export class BookForm implements OnInit {
     this.bookService.updateBook(bookObjFrHtml).subscribe({
       next: (result) => {
         console.log('Book updated:', result);
+        this.router.navigate(['/books']);
       },
       error: (error) => {
         console.error('Error updating book:', error);
