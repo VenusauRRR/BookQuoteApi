@@ -3,6 +3,7 @@ using System;
 using BookQuoteApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookQuoteApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260828092140_updatePasswordHasing")]
+    partial class updatePasswordHasing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.19");
@@ -89,14 +92,14 @@ namespace BookQuoteApi.Migrations
                         {
                             Id = new Guid("11111111-1111-1111-1111-111111111111"),
                             Email = "john.doe@example.com",
-                            PasswordHash = "$2a$11$kdkkb02uH1l3mEwE9XJade17qR9qnrAwAJgTqN5gm.HbunF.954P2",
+                            PasswordHash = "jD111",
                             Username = "john_doe"
                         },
                         new
                         {
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
                             Email = "mary_smith@example.com",
-                            PasswordHash = "$2a$11$dnE9bXLxEyQA7wrLWc7mveCpwtb3NGQC.xmnIYPDC1bL3kq4b90X6",
+                            PasswordHash = "mS222",
                             Username = "Mary_smith"
                         });
                 });

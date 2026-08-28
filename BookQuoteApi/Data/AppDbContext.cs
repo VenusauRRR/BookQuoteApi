@@ -48,14 +48,14 @@ public class AppDbContext:DbContext
                 Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
                 Username = "john_doe",
                 Email = "john.doe@example.com",
-                PasswordHash = "jD111"
+                PasswordHash = "$2a$11$kdkkb02uH1l3mEwE9XJade17qR9qnrAwAJgTqN5gm.HbunF.954P2"
             },
             new User
             {
                 Id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
                 Username = "Mary_smith",
                 Email = "mary_smith@example.com",
-                PasswordHash = "mS222"
+                PasswordHash = "$2a$11$dnE9bXLxEyQA7wrLWc7mveCpwtb3NGQC.xmnIYPDC1bL3kq4b90X6"
             }
         );
     }

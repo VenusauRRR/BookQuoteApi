@@ -45,7 +45,7 @@ public class UserController(AppDbContext db) : ControllerBase
         {
             Username = request.Username,
             Email = request.Email,
-            PasswordHash = request.Password
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
         };
         _context.Users.Add(newUser);
         await _context.SaveChangesAsync();
