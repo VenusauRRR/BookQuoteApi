@@ -1,4 +1,5 @@
 ﻿using BookQuoteApi.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookQuoteApi.Data;
@@ -11,6 +12,7 @@ public class AppDbContext:DbContext
     }
 
     public DbSet<Book> Books => Set<Book>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,6 +39,23 @@ public class AppDbContext:DbContext
                 Title = "Pride and Prejudice",
                 Author = "Jane Austen",
                 PublicationDate = new DateTime(1813, 1, 28)
+            }
+        );
+
+        modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                Username = "john_doe",
+                Email = "john.doe@example.com",
+                PasswordHash = "jD111"
+            },
+            new User
+            {
+                Id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                Username = "Mary_smith",
+                Email = "mary_smith@example.com",
+                PasswordHash = "mS222"
             }
         );
     }

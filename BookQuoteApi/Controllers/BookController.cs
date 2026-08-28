@@ -1,5 +1,6 @@
 ﻿using BookQuoteApi.Data;
 using BookQuoteApi.Models;
+using BookQuoteApi.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,15 +54,21 @@ public class BookController(AppDbContext db):ControllerBase
     }
 
     [HttpPost("add")]
-    public async Task<ActionResult<Book>> CreateBook(Book book)
+    public async Task<ActionResult<Book>> CreateBook(BookRequest request)
     {
-        _context.Books.Add(book);
+        var newBook = new Book
+        {
+            Title = request.Title,
+            Author = request.Author,
+            PublicationDate = request.PublicationDate
+        };
+        _context.Books.Add(newBook);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(
             nameof(GetBookById),
-            new { id = book.Id },
-            book);
+            new { id = newBook.Id },
+            newBook);
     }
 
     [HttpPut("update/{id}")]
