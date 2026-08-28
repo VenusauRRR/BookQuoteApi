@@ -55,4 +55,25 @@ public class UserController(AppDbContext db) : ControllerBase
             new { id = newUser.Id },
             newUser);
     }
+
+    [HttpPost("login")]
+    public async Task<ActionResult> Login(LoginRequest request)
+    {
+        string login_err_msg = "Invalid username or password";
+
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
+        if (user == null)
+        {
+            return Unauthorized(login_err_msg);
+        }
+
+        var passwordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+
+        if (!passwordValid)
+        {
+            return Unauthorized(login_err_msg);
+        }
+
+        return Ok("Login successful!");
+    }
 }
