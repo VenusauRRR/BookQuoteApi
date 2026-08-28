@@ -3,9 +3,11 @@ using BookQuoteApi.Models;
 using BookQuoteApi.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookQuoteApi.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/books")]
 public class BookController(AppDbContext db):ControllerBase

@@ -96,7 +96,7 @@ public class UserController(AppDbContext db, IConfiguration configuration) : Con
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddHours(1),
+            expires: DateTime.UtcNow.AddMinutes(2),
             signingCredentials: credentials);
 
         var tokenString = new JwtSecurityTokenHandler()
