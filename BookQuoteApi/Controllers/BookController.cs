@@ -87,7 +87,7 @@ public class BookController(AppDbContext db):ControllerBase
     }
 
     [HttpDelete("delete/{id}")]
-    public async Task<IActionResult> DeleteBook(Guid id)
+    public async Task<ActionResult> DeleteBook(Guid id)
     {
         var book = await _context.Books.FindAsync(id);
 

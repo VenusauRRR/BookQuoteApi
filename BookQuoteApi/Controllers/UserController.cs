@@ -3,14 +3,19 @@ using BookQuoteApi.Models;
 using BookQuoteApi.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace BookQuoteApi.Controllers;
 
 [ApiController]
 [Route("api/users")]
-public class UserController(AppDbContext db) : ControllerBase
+public class UserController(AppDbContext db, IConfiguration configuration) : ControllerBase
 {
     private readonly AppDbContext _context = db;
+    private readonly IConfiguration _configuration = configuration;
 
     [HttpGet("test")]
     public IActionResult Test()
@@ -74,6 +79,33 @@ public class UserController(AppDbContext db) : ControllerBase
             return Unauthorized(login_err_msg);
         }
 
-        return Ok("Login successful!");
+        var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(ClaimTypes.Name, user.Username)
+    };
+
+        var key = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
+
+        var credentials = new SigningCredentials(
+            key,
+            SecurityAlgorithms.HmacSha256);
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(1),
+            signingCredentials: credentials);
+
+        var tokenString = new JwtSecurityTokenHandler()
+            .WriteToken(token);
+
+        return Ok(new LoginResponse
+        {
+            Token = tokenString
+        });
+
     }
 }
