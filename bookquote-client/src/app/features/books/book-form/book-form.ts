@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../services/book-service';
-import { Book } from '../../models/book';
+import { BookService } from '../../../services/book-service';
+import { Book } from '../../../models/book';
 import { FormsModule } from '@angular/forms';
-import { CreateBook } from '../../models/create-book';
+import { CreateBook } from '../../../models/create-book';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 

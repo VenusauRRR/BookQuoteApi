@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class BookService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = environment.apiUrl + '/books';
 
 
   constructor(private http: HttpClient) {}
@@ -22,8 +22,8 @@ export class BookService {
     return this.http.get<Book>(`${this.apiUrl}/get/${bookId}`);
   }
 
-  addBook(book: CreateBook): Observable<CreateBook> {
-    return this.http.post<CreateBook>(`${this.apiUrl}/add`, book);
+  addBook(book: CreateBook): Observable<Book> {
+    return this.http.post<Book>(`${this.apiUrl}/add`, book);
   }
 
   deleteBook(bookId: string): Observable<void> {

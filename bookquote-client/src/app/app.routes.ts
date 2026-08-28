@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
-import { BookList } from './books/book-list/book-list';
-import { BookForm } from './books/book-form/book-form';
+import { BookList } from './features/books/book-list/book-list';
+import { BookForm } from './features/books/book-form/book-form';
+import { Login } from './features/auth/login/login';
+import { RegisterUser } from './features/auth/register-user/register-user';
 
 export const routes: Routes = [
   {
@@ -15,4 +17,12 @@ export const routes: Routes = [
     path: 'books/update/:bookId',
     component: BookForm,
   },
+  {
+    path: 'auth/login',
+    component: Login,
+  },
+  {
+    path: 'auth/register',
+    component: RegisterUser,
+  }
 ];
