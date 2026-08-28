@@ -27,6 +27,7 @@ export class Login {
     this.authService.loginUser(this.request).subscribe({
       next: (result) => {
         console.log('User logged in, Token:', result);
+        localStorage.setItem('token', result.token);
         this.router.navigate(['/books']);
       },
       error: (error) => {
