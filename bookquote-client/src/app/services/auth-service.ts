@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
 import { CreateUser } from '../models/create-user';
 import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
+import { RegisterResponse } from '../models/register-response';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +22,8 @@ export class AuthService {
   //   return this.http.get<User>(`${this.apiUrl}/get/${userId}`);
   // }
 
-  registerUser(user: CreateUser): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/register`, user);
+  registerUser(user: CreateUser): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(`${this.apiUrl}/register`, user);
   }
 
   loginUser(request: LoginRequest): Observable<LoginResponse> {

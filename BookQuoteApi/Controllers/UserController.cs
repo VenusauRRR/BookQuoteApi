@@ -39,12 +39,18 @@ public class UserController(AppDbContext db, IConfiguration configuration) : Con
             return NotFound();
         }
 
+        //return Ok(new RegisterResponse
+        //{
+        //    Id = user.Id.ToString(),
+        //    Username = user.Username,
+        //    Email = user.Email
+        //}); ;
         return user;
     }
 
 
     [HttpPost("register")]
-    public async Task<ActionResult<User>> RegisterUser(UserRequest request)
+    public async Task<ActionResult<RegisterResponse>> RegisterUser(UserRequest request)
     {
         var newUser = new User
         {
@@ -52,13 +58,19 @@ public class UserController(AppDbContext db, IConfiguration configuration) : Con
             Email = request.Email,
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
         };
+
         _context.Users.Add(newUser);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(
             nameof(GetUserById),
             new { id = newUser.Id },
-            newUser);
+             new RegisterResponse
+             {
+                 Id = newUser.Id.ToString(),
+                 Username = newUser.Username,
+                 Email = newUser.Email
+             });
     }
 
     [HttpPost("login")]

@@ -1,6 +1,5 @@
-export interface User {
+export interface RegisterResponse {
   id: string,
   username: string;
   email: string;
-  hashpassword: string;
 }
