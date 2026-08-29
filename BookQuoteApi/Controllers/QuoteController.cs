@@ -80,7 +80,6 @@ public class QuoteController(AppDbContext db) : ControllerBase
             UserId = userId.Value,
         };
 
-
         _context.Quotes.Add(newQuote);
         await _context.SaveChangesAsync();
 
