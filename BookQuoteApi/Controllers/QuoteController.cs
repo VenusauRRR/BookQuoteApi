@@ -89,4 +89,51 @@ public class QuoteController(AppDbContext db) : ControllerBase
             newQuote);
     }
 
+
+    [HttpPut("update/{id}")]
+    public async Task<IActionResult> UpdateQuote(Guid id, QuoteRequest request)
+    {
+        var userId = GetCurrentUserId();
+        if (userId == null)
+        {
+            return Unauthorized();
+        }
+
+        var quote = await _context.Quotes.FirstOrDefaultAsync(q => q.Id == id && q.UserId == userId);
+
+        if (quote == null)
+        {
+            return NotFound();
+        }
+        quote.QuoteText = request.QuoteText;
+
+        _context.Entry(quote).State = EntityState.Modified;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(request);
+    }
+
+    [HttpDelete("delete/{id}")]
+    public async Task<ActionResult> DeleteQuote(Guid id)
+    {
+        var userId = GetCurrentUserId();
+        if (userId == null)
+        {
+            return Unauthorized();
+        }
+        var quote = await _context.Quotes.FirstOrDefaultAsync(q => q.Id == id && q.UserId == userId);
+
+        if (quote == null)
+        {
+            return NotFound();
+        }
+
+        _context.Quotes.Remove(quote);
+        await _context.SaveChangesAsync();
+
+        return Ok(quote);
+    }
+
+
 }
