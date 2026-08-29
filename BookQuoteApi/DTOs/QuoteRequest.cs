@@ -1,9 +1,6 @@
-﻿namespace BookQuoteApi.Models;
-
-public class Quote
+﻿namespace BookQuoteApi.DTOs;
+public class QuoteRequest
 {
-    public Guid Id { get; set; }
-
     public string QuoteText { get; set; } = string.Empty;
     public Guid UserId { get; set; }
 }
