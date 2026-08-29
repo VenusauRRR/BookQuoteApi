@@ -39,13 +39,12 @@ public class UserController(AppDbContext db, IConfiguration configuration) : Con
             return NotFound();
         }
 
-        //return Ok(new RegisterResponse
-        //{
-        //    Id = user.Id.ToString(),
-        //    Username = user.Username,
-        //    Email = user.Email
-        //}); ;
-        return user;
+        return Ok(new RegisterResponse
+        {
+            Id = user.Id.ToString(),
+            Username = user.Username,
+            Email = user.Email
+        });
     }
 
 
