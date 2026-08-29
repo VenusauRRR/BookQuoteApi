@@ -13,6 +13,7 @@ public class AppDbContext:DbContext
 
     public DbSet<Book> Books => Set<Book>();
     public DbSet<User> Users => Set<User>();
+    public DbSet<Quote> Quotes => Set<Quote>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -58,5 +59,71 @@ public class AppDbContext:DbContext
                 PasswordHash = "$2a$11$dnE9bXLxEyQA7wrLWc7mveCpwtb3NGQC.xmnIYPDC1bL3kq4b90X6"
             }
         );
+
+        modelBuilder.Entity<Quote>().HasData(
+    // John Doe - 5 quotes
+    new Quote
+    {
+        Id = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+        QuoteText = "It is never too late to become what you might have been.",
+        UserId = Guid.Parse("11111111-1111-1111-1111-111111111111")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+        QuoteText = "The only way out is through.",
+        UserId = Guid.Parse("11111111-1111-1111-1111-111111111111")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+        QuoteText = "Not all those who wander are lost.",
+        UserId = Guid.Parse("11111111-1111-1111-1111-111111111111")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("dddddddd-dddd-dddd-dddd-dddddddddddd"),
+        QuoteText = "The future depends on what you do today.",
+        UserId = Guid.Parse("11111111-1111-1111-1111-111111111111")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee"),
+        QuoteText = "Success is the sum of small efforts, repeated day in and day out.",
+        UserId = Guid.Parse("11111111-1111-1111-1111-111111111111")
+    },
+
+    // Mary Smith - 5 quotes
+    new Quote
+    {
+        Id = Guid.Parse("ffffffff-ffff-ffff-ffff-ffffffffffff"),
+        QuoteText = "Whatever you are, be a good one.",
+        UserId = Guid.Parse("22222222-2222-2222-2222-222222222222")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("12121212-1212-1212-1212-121212121212"),
+        QuoteText = "There is no charm equal to tenderness of heart.",
+        UserId = Guid.Parse("22222222-2222-2222-2222-222222222222")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("34343434-3434-3434-3434-343434343434"),
+        QuoteText = "Every moment is a fresh beginning.",
+        UserId = Guid.Parse("22222222-2222-2222-2222-222222222222")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("56565656-5656-5656-5656-565656565656"),
+        QuoteText = "What we think, we become.",
+        UserId = Guid.Parse("22222222-2222-2222-2222-222222222222")
+    },
+    new Quote
+    {
+        Id = Guid.Parse("78787878-7878-7878-7878-787878787878"),
+        QuoteText = "Happiness depends upon ourselves.",
+        UserId = Guid.Parse("22222222-2222-2222-2222-222222222222")
+    }
+);
     }
 }
