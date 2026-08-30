@@ -39,7 +39,7 @@ public class BookController(AppDbContext db):ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
     {
-        return await _context.Books.ToListAsync();
+        return await _context.Books.OrderByDescending(q => q.UpdatedAt).ToListAsync();
     }
 
     [HttpGet("get/{id}")]
@@ -62,7 +62,9 @@ public class BookController(AppDbContext db):ControllerBase
         {
             Title = request.Title,
             Author = request.Author,
-            PublicationDate = request.PublicationDate
+            PublicationDate = request.PublicationDate,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
         };
         _context.Books.Add(newBook);
         await _context.SaveChangesAsync();
@@ -81,6 +83,7 @@ public class BookController(AppDbContext db):ControllerBase
             return BadRequest();
         }
 
+        book.UpdatedAt = DateTime.UtcNow;
         _context.Entry(book).State = EntityState.Modified;
 
         await _context.SaveChangesAsync();

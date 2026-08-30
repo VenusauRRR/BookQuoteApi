@@ -20,6 +20,7 @@ export class BookList implements OnInit {
     console.log('booklist added');
 
     this.bookService.getBooks().subscribe((books) => {
+      console.log(books);
       this.books = books;
     });
   }

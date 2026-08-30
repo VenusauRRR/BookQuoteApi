@@ -31,14 +31,14 @@ public class QuoteController(AppDbContext db) : ControllerBase
         return Ok("Quotes controller works!");
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Quote>>> GetAllQuotes()
-    {
-        return await _context.Quotes.ToListAsync();
-    }
+    //[HttpGet]
+    //public async Task<ActionResult<IEnumerable<Quote>>> GetAllQuotes()
+    //{
+    //    return await _context.Quotes.ToListAsync();
+    //}
 
     [HttpGet("get/{id}")]
-    public async Task<ActionResult<Quote>> GetQuoteById(Guid id)
+    public async Task<ActionResult<QuoteResponse>> GetQuoteById(Guid id)
     {
         var userId = GetCurrentUserId();
 
@@ -53,11 +53,15 @@ public class QuoteController(AppDbContext db) : ControllerBase
             return NotFound();
         }
 
-        return quote;
+        return new QuoteResponse
+        {
+            Id = quote.Id,
+            QuoteText = quote.QuoteText
+        };
     }
 
     [HttpGet("get-my-quotes")]
-    public async Task<ActionResult<IEnumerable<Quote>>> GetMyQuotes()
+    public async Task<ActionResult<IEnumerable<QuoteResponse>>> GetMyQuotes()
     {
         var userId = GetCurrentUserId();
         if (userId == null)
@@ -66,7 +70,14 @@ public class QuoteController(AppDbContext db) : ControllerBase
         }
         var quotes = await _context.Quotes.Where(q => q.UserId == userId).ToListAsync();
 
-        return quotes;
+        var quoteResponses = quotes.Select(q => new QuoteResponse
+        {
+            Id = q.Id,
+            QuoteText = q.QuoteText,
+            CreatedAt = q.CreatedAt,
+            UpdatedAt = q.UpdatedAt
+        }).OrderByDescending(q => q.UpdatedAt).ToList();
+        return quoteResponses;
     }
 
 
@@ -78,6 +89,8 @@ public class QuoteController(AppDbContext db) : ControllerBase
         {
             QuoteText = request.QuoteText,
             UserId = userId.Value,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
         };
 
         _context.Quotes.Add(newQuote);
@@ -106,6 +119,7 @@ public class QuoteController(AppDbContext db) : ControllerBase
             return NotFound();
         }
         quote.QuoteText = request.QuoteText;
+        quote.UpdatedAt = DateTime.UtcNow;
 
         _context.Entry(quote).State = EntityState.Modified;
 

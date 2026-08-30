@@ -3,6 +3,7 @@ using System;
 using BookQuoteApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookQuoteApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260830225050_AddCreatedAtToModels")]
+    partial class AddCreatedAtToModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.19");
@@ -37,9 +40,6 @@ namespace BookQuoteApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Books");
@@ -49,28 +49,25 @@ namespace BookQuoteApi.Migrations
                         {
                             Id = new Guid("11111111-1111-1111-1111-111111111111"),
                             Author = "J.R.R. Tolkien",
-                            CreatedAt = new DateTime(2001, 12, 30, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 94, DateTimeKind.Utc).AddTicks(5858),
                             PublicationDate = new DateTime(1937, 9, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "The Hobbit",
-                            UpdatedAt = new DateTime(2001, 12, 30, 10, 0, 0, 0, DateTimeKind.Utc)
+                            Title = "The Hobbit"
                         },
                         new
                         {
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
                             Author = "George Orwell",
-                            CreatedAt = new DateTime(1998, 1, 12, 23, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 94, DateTimeKind.Utc).AddTicks(7403),
                             PublicationDate = new DateTime(1949, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "1984",
-                            UpdatedAt = new DateTime(1998, 1, 12, 23, 0, 0, 0, DateTimeKind.Utc)
+                            Title = "1984"
                         },
                         new
                         {
                             Id = new Guid("33333333-3333-3333-3333-333333333333"),
                             Author = "Jane Austen",
-                            CreatedAt = new DateTime(2010, 9, 15, 4, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 94, DateTimeKind.Utc).AddTicks(7415),
                             PublicationDate = new DateTime(1813, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Title = "Pride and Prejudice",
-                            UpdatedAt = new DateTime(2010, 9, 15, 4, 0, 0, 0, DateTimeKind.Utc)
+                            Title = "Pride and Prejudice"
                         });
                 });
 
@@ -87,9 +84,6 @@ namespace BookQuoteApi.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
@@ -101,81 +95,71 @@ namespace BookQuoteApi.Migrations
                         new
                         {
                             Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
-                            CreatedAt = new DateTime(1923, 2, 14, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(5902),
                             QuoteText = "It is never too late to become what you might have been.",
-                            UpdatedAt = new DateTime(1923, 2, 14, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("11111111-1111-1111-1111-111111111111")
                         },
                         new
                         {
                             Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
-                            CreatedAt = new DateTime(2012, 5, 17, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6818),
                             QuoteText = "The only way out is through.",
-                            UpdatedAt = new DateTime(2012, 5, 17, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("11111111-1111-1111-1111-111111111111")
                         },
                         new
                         {
                             Id = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
-                            CreatedAt = new DateTime(1956, 10, 27, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6824),
                             QuoteText = "Not all those who wander are lost.",
-                            UpdatedAt = new DateTime(1956, 10, 27, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("11111111-1111-1111-1111-111111111111")
                         },
                         new
                         {
                             Id = new Guid("dddddddd-dddd-dddd-dddd-dddddddddddd"),
-                            CreatedAt = new DateTime(1823, 8, 12, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6826),
                             QuoteText = "The future depends on what you do today.",
-                            UpdatedAt = new DateTime(1823, 8, 12, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("11111111-1111-1111-1111-111111111111")
                         },
                         new
                         {
                             Id = new Guid("eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee"),
-                            CreatedAt = new DateTime(2017, 2, 28, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6829),
                             QuoteText = "Success is the sum of small efforts, repeated day in and day out.",
-                            UpdatedAt = new DateTime(2017, 2, 28, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("11111111-1111-1111-1111-111111111111")
                         },
                         new
                         {
                             Id = new Guid("ffffffff-ffff-ffff-ffff-ffffffffffff"),
-                            CreatedAt = new DateTime(1954, 11, 26, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6831),
                             QuoteText = "Whatever you are, be a good one.",
-                            UpdatedAt = new DateTime(1954, 11, 26, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("22222222-2222-2222-2222-222222222222")
                         },
                         new
                         {
                             Id = new Guid("12121212-1212-1212-1212-121212121212"),
-                            CreatedAt = new DateTime(2015, 7, 19, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6833),
                             QuoteText = "There is no charm equal to tenderness of heart.",
-                            UpdatedAt = new DateTime(2015, 7, 19, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("22222222-2222-2222-2222-222222222222")
                         },
                         new
                         {
                             Id = new Guid("34343434-3434-3434-3434-343434343434"),
-                            CreatedAt = new DateTime(2005, 3, 11, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6836),
                             QuoteText = "Every moment is a fresh beginning.",
-                            UpdatedAt = new DateTime(2005, 3, 11, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("22222222-2222-2222-2222-222222222222")
                         },
                         new
                         {
                             Id = new Guid("56565656-5656-5656-5656-565656565656"),
-                            CreatedAt = new DateTime(1999, 9, 9, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6838),
                             QuoteText = "What we think, we become.",
-                            UpdatedAt = new DateTime(1999, 9, 9, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("22222222-2222-2222-2222-222222222222")
                         },
                         new
                         {
                             Id = new Guid("78787878-7878-7878-7878-787878787878"),
-                            CreatedAt = new DateTime(2010, 12, 25, 10, 0, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2026, 8, 30, 22, 50, 50, 95, DateTimeKind.Utc).AddTicks(6840),
                             QuoteText = "Happiness depends upon ourselves.",
-                            UpdatedAt = new DateTime(2010, 12, 25, 10, 0, 0, 0, DateTimeKind.Utc),
                             UserId = new Guid("22222222-2222-2222-2222-222222222222")
                         });
                 });
