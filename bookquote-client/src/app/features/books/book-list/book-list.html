@@ -7,7 +7,7 @@
 <div>
   <h2>{{ book.title }}</h2>
   <p>Author: {{ book.author }}</p>
-  <p>Published: {{ book.publicationDate }}</p>
+  <p>Published: {{ book.publicationDate | date:'dd/MM/yyyy'}}</p>
   <button type="button" (click)="deleteBook(book.id)">Delete</button>
   <button type="button" (click)="updateBook(book)">Edit</button>
 </div>

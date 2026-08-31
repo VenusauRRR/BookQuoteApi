@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Navbar } from '../navbar/navbar';
 
 @Component({
   selector: 'app-error',
-  imports: [Navbar],
+  imports: [],
   templateUrl: './error.html',
   styleUrl: './error.css',
 })

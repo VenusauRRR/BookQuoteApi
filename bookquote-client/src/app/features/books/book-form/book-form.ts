@@ -5,11 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { CreateBook } from '../../../models/create-book';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Navbar } from '../../../layout/navbar/navbar';
+import { FormStyleDirective } from '../../../directives/form-style-directive';
 
 @Component({
   selector: 'app-book-form',
-  imports: [FormsModule, Navbar],
+  imports: [FormsModule, FormStyleDirective],
   templateUrl: './book-form.html',
   styleUrl: './book-form.css',
 })

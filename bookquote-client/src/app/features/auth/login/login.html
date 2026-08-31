@@ -1,19 +1,18 @@
-<main>
   <h1>Login</h1>
   <p>Please login to your account!</p>
 
-  <form (ngSubmit)="login()">
-    <label for="username">Username:</label>
-    <input id="username" type="text" name="username" [(ngModel)]="request.username" />
+  <div>
+    <form (ngSubmit)="login()">
+      <label for="username">Username:</label>
+      <input id="username" type="text" name="username" [(ngModel)]="request.username" />
 
-    <br />
-    <label for="password">Password:</label>
-    <input id="password" type="password" name="password" [(ngModel)]="request.password" />
+      <br />
+      <label for="password">Password:</label>
+      <input id="password" type="password" name="password" [(ngModel)]="request.password" />
 
-    <br />
+      <br />
 
-    <button type="submit">Log in!</button>
-  </form>
-
-
-</main>
+      <button type="submit">Log in</button>
+    </form>
+  </div>
+  

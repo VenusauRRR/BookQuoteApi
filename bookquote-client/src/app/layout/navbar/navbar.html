@@ -1,19 +1,26 @@
 
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg bg-warning navbar-light">
   <div class="container">
 
     <a class="navbar-brand" routerLink="/">
       BookQuote
     </a>
 
-    <button class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar">
+    <div class="d-flex align-items-center gap-2 d-lg-none">
+      <button type="button"
+              class="btn btn-outline-secondary">
+        <i class="fa-solid fa-sun"></i>
+      </button>
 
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
 
     <div class="collapse navbar-collapse"
          id="mainNavbar">
@@ -22,18 +29,21 @@
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/">
+            <i class="fa-solid fa-house"></i>
             Home
           </a>
         </li>
         @if (authService.isLoggedIn()){
         <li class="nav-item">
           <a class="nav-link" routerLink="/books">
+            <i class="fa-solid fa-book"></i>
             Books
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/quotes">
+            <i class="fa-solid fa-quote-left"></i>
             Quotes
           </a>
         </li>
@@ -43,21 +53,30 @@
       </ul>
 
       <div class="d-flex gap-2">
+        <!-- Theme button -->
+        <button type="button"
+                class="btn btn-outline-secondary d-none d-lg-block">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+
+
         @if (authService.isLoggedIn()){
-        <button 
-          type ="button"
-          class="btn btn-secondary"
-          (click)="logout()">
+        <button type="button"
+                class="btn btn-secondary"
+                (click)="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
           Logout
         </button>
         } @else {
         <a routerLink="/auth/login"
-           class="btn btn-outline-light">
+           class="btn btn-warning">
+          <i class="fa-solid fa-right-to-bracket"></i>
           Login
         </a>
 
         <a routerLink="/auth/register"
            class="btn btn-primary">
+          <i class="fa-solid fa-user-plus"></i>
           Register
         </a>
         }

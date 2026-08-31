@@ -3,11 +3,11 @@ import { CreateUser } from '../../../models/create-user';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth-service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Navbar } from '../../../layout/navbar/navbar';
+import { FormStyleDirective } from '../../../directives/form-style-directive';
 
 @Component({
   selector: 'app-register-user',
-  imports: [FormsModule, Navbar],
+  imports: [FormsModule, FormStyleDirective],
   templateUrl: './register-user.html',
   styleUrl: './register-user.css',
 })

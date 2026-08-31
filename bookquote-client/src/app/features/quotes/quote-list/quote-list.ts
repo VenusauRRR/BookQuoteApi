@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { QuoteService } from '../../../services/quote-service';
 import { Router } from '@angular/router';
 import { QuoteResponse } from '../../../models/quote-response';
-import { Navbar } from '../../../layout/navbar/navbar';
 
 @Component({
   selector: 'app-quote-list',
-  imports: [Navbar],
+  imports: [],
   templateUrl: './quote-list.html',
   styleUrl: './quote-list.css',
 })
