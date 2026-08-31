@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container">
 
@@ -23,7 +25,7 @@
             Home
           </a>
         </li>
-
+        @if (authService.isLoggedIn()){
         <li class="nav-item">
           <a class="nav-link" routerLink="/books">
             Books
@@ -35,11 +37,20 @@
             Quotes
           </a>
         </li>
+        }
+
 
       </ul>
 
       <div class="d-flex gap-2">
-
+        @if (authService.isLoggedIn()){
+        <button 
+          type ="button"
+          class="btn btn-secondary"
+          (click)="logout()">
+          Logout
+        </button>
+        } @else {
         <a routerLink="/auth/login"
            class="btn btn-outline-light">
           Login
@@ -49,6 +60,8 @@
            class="btn btn-primary">
           Register
         </a>
+        }
+
 
       </div>
 
