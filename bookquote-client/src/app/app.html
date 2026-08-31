@@ -1,8 +1,12 @@
 <div class="d-flex flex-column min-vh-100">
 
-  <app-navbar></app-navbar>
+  <app-navbar (themeChanged)="onThemeChanged($event)"></app-navbar>
 
-  <div class="bg-light flex-grow-1">
+  <div [class.bg-dark]="isDarkMode"
+       [class.bg-light]="!isDarkMode"
+       [class.text-light]="isDarkMode"
+       [class.text-dark]="!isDarkMode"
+       class="flex-grow-1">
     <div class="container">
       <router-outlet></router-outlet>
     </div>

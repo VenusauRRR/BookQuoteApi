@@ -10,4 +10,9 @@ import { Navbar } from './layout/navbar/navbar';
 })
 export class App {
   protected readonly title = signal('bookquote-client');
+  isDarkMode = false;
+
+  onThemeChanged(isDark: boolean): void {
+    this.isDarkMode = isDark;
+  }
 }
