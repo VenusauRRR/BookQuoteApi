@@ -31,6 +31,7 @@ export class Navbar {
     this.themeChanged.emit(this.isDarkMode);
 
     const nav = document.querySelector('nav');
+    const footer = document.querySelector('footer');
     const btnGroup = document.getElementsByName('btnGroup');
 
     document.documentElement.setAttribute(
@@ -40,25 +41,11 @@ export class Navbar {
 
     if (this.isDarkMode) {
       nav?.classList.remove('bg-warning');
+      footer?.classList.remove('bg-warning');
     } else {
       nav?.classList.add('bg-warning');
+      footer?.classList.add('bg-warning');
     }
-
-
-    // if (this.isDarkMode) {
-    //   nav?.classList.add('navbar-dark');
-    //   nav?.classList.add('bg-secondary');
-    //   nav?.classList.remove('navbar-light');
-    //   nav?.classList.remove('bg-warning');
-    //   btnGroup.forEach((btn) => { btn.classList.add('btn-secondary'); btn.classList.remove('btn-warning') });
-    // } else {
-    //   nav?.classList.add('navbar-light');
-    //   nav?.classList.add('bg-warning');
-    //   nav?.classList.remove('navbar-dark');
-    //   nav?.classList.remove('bg-secondary');
-    //   btnGroup.forEach((btn) => { btn.classList.remove('btn-secondary'); btn.classList.add('btn-warning') });
-    // }
-    
   }
 
 }
