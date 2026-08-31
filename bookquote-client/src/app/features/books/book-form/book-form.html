@@ -1,31 +1,34 @@
-<p>book-form works!</p>
+<app-navbar></app-navbar>
+<div>
 
-<h1>{{ bookId ? 'Edit' : 'Add' }} Book</h1>
+  <p>book-form works!</p>
 
-<form (ngSubmit)="saveBook()">
-  <label for="bookId" [textContent]="this.bookId">BookId:</label>
+  <h1>{{ bookId ? 'Edit' : 'Add' }} Book</h1>
 
-  <br />
+  <form (ngSubmit)="saveBook()">
+    <label for="bookId" [textContent]="this.bookId">BookId:</label>
 
-  <label for="title">Title:</label>
-  <input id="title" type="text" name="title" [(ngModel)]="book.title" />
+    <br />
 
-  <br />
+    <label for="title">Title:</label>
+    <input id="title" type="text" name="title" [(ngModel)]="book.title" />
 
-  <label for="author">Author:</label>
-  <input id="author" type="text" name="author" [(ngModel)]="book.author" />
+    <br />
 
-  <br />
+    <label for="author">Author:</label>
+    <input id="author" type="text" name="author" [(ngModel)]="book.author" />
 
-  <label for="publicationDate">Publication Date:</label>
-  <input
-    id="publicationDate"
-    type="date"
-    name="publicationDate"
-    [(ngModel)]="book.publicationDate"
-  />
+    <br />
 
-  <br />
+    <label for="publicationDate">Publication Date:</label>
+    <input id="publicationDate"
+           type="date"
+           name="publicationDate"
+           [(ngModel)]="book.publicationDate" />
 
-  <button type="submit">{{ bookId ? 'Update' : 'Add' }}</button>
-</form>
+    <br />
+
+    <button type="submit">{{ bookId ? 'Update' : 'Add' }}</button>
+  </form>
+
+</div>

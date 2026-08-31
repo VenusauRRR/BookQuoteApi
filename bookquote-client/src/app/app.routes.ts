@@ -43,5 +43,9 @@ export const routes: Routes = [
   {
     path: 'quotes/update/:quoteId',
     component: QuoteForm,
+  },
+  {
+    path: 'error',
+    component: QuoteForm,
   }
 ];

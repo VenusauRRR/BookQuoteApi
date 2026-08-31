@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../services/book-service';
 import { Book } from '../../../models/book';
 import { Route, Router } from '@angular/router';
+import { Navbar } from '../../../layout/navbar/navbar';
 
 @Component({
   selector: 'app-book-list',
+  imports: [Navbar],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })

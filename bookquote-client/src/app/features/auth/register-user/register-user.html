@@ -1,18 +1,24 @@
-<p>register-user works!</p>
+<app-navbar></app-navbar>
 
-<form (ngSubmit)="registerUser()">
-  <label for="username">Username:</label>
-  <input id="username" type="text" name="username" [(ngModel)]="user.username" />
+<div>
+  <h1>Registration</h1>
+  <p>Please fill in the form below to register:</p>
 
-  <br />
-  <label for="email">Email:</label>
-  <input id="email" type="text" name="email" [(ngModel)]="user.email" />
+  <form (ngSubmit)="registerUser()">
+    <label for="username">Username:</label>
+    <input id="username" type="text" name="username" [(ngModel)]="user.username" />
 
-  <br />
-  <label for="password">Password:</label>
-  <input id="password" type="password" name="password" [(ngModel)]="user.password" />
+    <br />
+    <label for="email">Email:</label>
+    <input id="email" type="text" name="email" [(ngModel)]="user.email" />
 
-  <br />
+    <br />
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="password" [(ngModel)]="user.password" />
 
-  <button type="submit">Register</button>
-</form>
+    <br />
+
+    <button type="submit">Register</button>
+  </form>
+
+</div>

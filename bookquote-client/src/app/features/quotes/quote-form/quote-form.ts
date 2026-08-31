@@ -4,10 +4,11 @@ import { CreateQuote } from '../../../models/create-quote';
 import { QuoteService } from '../../../services/quote-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuoteResponse } from '../../../models/quote-response';
+import { Navbar } from '../../../layout/navbar/navbar';
 
 @Component({
   selector: 'app-quote-form',
-  imports: [FormsModule],
+  imports: [FormsModule, Navbar],
   templateUrl: './quote-form.html',
   styleUrl: './quote-form.css',
 })

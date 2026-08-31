@@ -1,13 +1,19 @@
-<p>My Quotes!</p>
-<button type="button" (click)="addQuote()">Add Quote</button>
+<app-navbar></app-navbar>
 
-<p>Number of quotes: {{ quotes.length }}</p>
-
-@for (quote of quotes; track quote.id) {
 <div>
-  <h2>{{ quote.id }}</h2>
-  <p>QuoteText: {{ quote.quoteText }}</p>
-  <button type="button" (click)="deleteQuote(quote.id)">Delete</button>
-  <button type="button" (click)="updateQuote(quote)">Edit</button>
+  <p>My Quotes!</p>
+  <button type="button" (click)="addQuote()">Add Quote</button>
+
+  <p>Number of quotes: {{ quotes.length }}</p>
+
+  @for (quote of quotes; track quote.id) {
+  <div>
+    <h2>{{ quote.id }}</h2>
+    <p>QuoteText: {{ quote.quoteText }}</p>
+    <button type="button" (click)="deleteQuote(quote.id)">Delete</button>
+    <button type="button" (click)="updateQuote(quote)">Edit</button>
+  </div>
+  }
+
+
 </div>
-}
