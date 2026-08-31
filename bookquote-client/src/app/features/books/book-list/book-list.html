@@ -1,14 +1,31 @@
-<h1>My Books :)</h1>
-<button type="button" (click)="addBook()">Add Book</button>
+<h1>My Books <i class="fa-brands fa-leanpub text-primary"></i></h1>
+<div class="d-flex justify-content-center" >
+  <button type="button"(click)="addBook()">
+    <i class="fa-solid fa-plus"></i>
+    Add Book
+  </button>
+</div>
+
 
 <p>Number of books: {{ books.length }}</p>
 
-@for (book of books; track book.id) {
-<div>
-  <h2>{{ book.title }}</h2>
-  <p>Author: {{ book.author }}</p>
-  <p>Published: {{ book.publicationDate | date:'dd/MM/yyyy'}}</p>
-  <button type="button" (click)="deleteBook(book.id)">Delete</button>
-  <button type="button" (click)="updateBook(book)">Edit</button>
+<div class="list-group">
+  @for (book of books; track book.id) {
+  <div class="list-group-item justify-content-between d-flex">
+    <div>
+      <h5>{{ book.title }}</h5>
+      <p>
+        Author: {{ book.author }}<br />
+        Published: {{ book.publicationDate | date:'dd/MM/yyyy'}}
+      </p>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-sm" (click)="updateBook(book)"><i class="fa-regular fa-pen-to-square"></i></button>
+      <button type="button" class="btn btn-sm" (click)="deleteBook(book.id)"><i class="fa-solid fa-trash"></i></button>
+
+    </div>
+    </div>
+  }
 </div>
-}
+

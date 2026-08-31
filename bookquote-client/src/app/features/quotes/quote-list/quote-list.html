@@ -1,12 +1,23 @@
-<h1>My Quotes!</h1>
-<button type="button" (click)="addQuote()">Add Quote</button>
+<h1>My Quotes <i class="fa-solid fa-heart text-danger"></i></h1>
+<div class="d-flex justify-content-center">
+  <button type="button" (click)="addQuote()">
+    <i class="fa-solid fa-plus"></i>
+    Add Quote
+  </button>
+</div>
 
 <p>Number of quotes: {{ quotes.length }}</p>
+<div class="list-group">
+  @for (quote of quotes; track quote.id) {
+  <div  class="list-group-item justify-content-between d-flex">
+    <div class="text-break">
+      <p class="quote-text">{{ quote.quoteText }}</p>
+    </div>
+    <div class="d-flex">
+      <button type="button" class="btn btn-sm" (click)="updateQuote(quote)"><i class="fa-regular fa-pen-to-square"></i></button>
+      <button type="button" class="btn btn-sm" (click)="deleteQuote(quote.id)"><i class="fa-solid fa-trash"></i></button>
+    </div>
+  </div>
+  }
 
-@for (quote of quotes; track quote.id) {
-<div>
-  <p class="quote-text">{{ quote.quoteText }}</p>
-  <button type="button" (click)="deleteQuote(quote.id)">Delete</button>
-  <button type="button" (click)="updateQuote(quote)">Edit</button>
 </div>
-}
