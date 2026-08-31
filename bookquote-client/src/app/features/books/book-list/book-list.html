@@ -1,18 +1,14 @@
-<app-navbar></app-navbar>
+<h1>My Books :)</h1>
+<button type="button" (click)="addBook()">Add Book</button>
 
-<div class="container">
-  <h1>My Books :)</h1>
-  <button type="button" (click)="addBook()">Add Book</button>
+<p>Number of books: {{ books.length }}</p>
 
-  <p>Number of books: {{ books.length }}</p>
-
-  @for (book of books; track book.id) {
-  <div>
-    <h2>{{ book.title }}</h2>
-    <p>Author: {{ book.author }}</p>
-    <p>Published: {{ book.publicationDate }}</p>
-    <button type="button" (click)="deleteBook(book.id)">Delete</button>
-    <button type="button" (click)="updateBook(book)">Edit</button>
-  </div>
-  }
+@for (book of books; track book.id) {
+<div>
+  <h2>{{ book.title }}</h2>
+  <p>Author: {{ book.author }}</p>
+  <p>Published: {{ book.publicationDate }}</p>
+  <button type="button" (click)="deleteBook(book.id)">Delete</button>
+  <button type="button" (click)="updateBook(book)">Edit</button>
 </div>
+}

@@ -3,12 +3,12 @@
 <h1>{{ quoteId ? 'Edit' : 'Add' }} Quote</h1>
 
 <form (ngSubmit)="saveQuote()">
-  <label for="quoteId" [textContent]="this.quoteId">QuoteId:</label>
+  <!--<label for="quoteId" [textContent]="this.quoteId">QuoteId:</label>-->
 
   <br />
 
   <label for="quoteText">Quote Text:</label>
-  <input id="quoteText" type="text" name="quoteText" [(ngModel)]="quote.quoteText" />
+  <textarea id="quoteText" name="quoteText" class="form-control" [(ngModel)]="quote.quoteText" rows="5"></textarea>
 
   <br />
 
