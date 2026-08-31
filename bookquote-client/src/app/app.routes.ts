@@ -5,8 +5,13 @@ import { Login } from './features/auth/login/login';
 import { RegisterUser } from './features/auth/register-user/register-user';
 import { QuoteList } from './features/quotes/quote-list/quote-list';
 import { QuoteForm } from './features/quotes/quote-form/quote-form';
+import { Home } from './features/home/home';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: Home,
+  },
   {
     path: 'books',
     component: BookList,
