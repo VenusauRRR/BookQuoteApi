@@ -2,16 +2,13 @@
 
 <div>
   <form (ngSubmit)="saveQuote()">
-    <!--<label for="quoteId" [textContent]="this.quoteId">QuoteId:</label>-->
-
-    <br />
 
     <label for="quoteText">Quote Text:</label>
     <textarea id="quoteText" name="quoteText" [(ngModel)]="quote.quoteText" rows="5"></textarea>
 
     <br />
 
-    <button name="btnGroup" type="submit" class="btn">{{ quoteId ? 'Update' : 'Add' }}</button>
+    <button type="submit">{{ quoteId ? 'Update' : 'Add' }}</button>
   </form>
 
 </div>

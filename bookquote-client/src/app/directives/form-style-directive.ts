@@ -26,5 +26,4 @@ export class FormStyleDirective implements AfterViewInit {
         button.classList.add('mt-2');
       });
     }
-
 }

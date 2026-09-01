@@ -11,12 +11,7 @@ import { CreateQuote } from '../models/create-quote';
 export class QuoteService {
   private apiUrl = environment.apiUrl + '/quotes';
 
-
   constructor(private http: HttpClient) { }
-
-  // getQuotes(): Observable<Quote[]> {
-  //   return this.http.get<Quote[]>(this.apiUrl);
-  // }
 
   getMyQuotes(): Observable<QuoteResponse[]> {
     return this.http.get<QuoteResponse[]>(`${this.apiUrl}/get-my-quotes`);

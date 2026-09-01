@@ -17,14 +17,6 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  // getUsers(): Observable<User[]> {
-  //   return this.http.get<User[]>(this.apiUrl);
-  // }
-
-  // getUserById(userId: string): Observable<User> {
-  //   return this.http.get<User>(`${this.apiUrl}/get/${userId}`);
-  // }
-
   registerUser(user: CreateUser): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(`${this.apiUrl}/register`, user);
   }
@@ -39,7 +31,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
-
   }
 
 }

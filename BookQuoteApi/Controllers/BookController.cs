@@ -12,22 +12,6 @@ namespace BookQuoteApi.Controllers;
 [Route("api/books")]
 public class BookController(AppDbContext db):ControllerBase
 {
-    //private readonly AppDbContext _db = db;
-
-    //[HttpPost]
-    //public async Task<ActionResult<Book>> CreateBook(Book book)
-    //{
-    //    var result = _db.Books.Add(book);
-    //    await _db.SaveChangesAsync();
-
-    //    return Ok(result);
-    //}
-
-    //[HttpGet]
-    //public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
-    //{
-    //    return await _db.Books.ToListAsync();
-    //}
     private readonly AppDbContext _context = db;
 
     [HttpGet("test")]

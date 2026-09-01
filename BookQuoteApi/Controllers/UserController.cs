@@ -117,6 +117,5 @@ public class UserController(AppDbContext db, IConfiguration configuration) : Con
         {
             Token = tokenString
         });
-
     }
 }

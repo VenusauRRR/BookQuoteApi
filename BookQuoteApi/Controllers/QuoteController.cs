@@ -31,12 +31,6 @@ public class QuoteController(AppDbContext db) : ControllerBase
         return Ok("Quotes controller works!");
     }
 
-    //[HttpGet]
-    //public async Task<ActionResult<IEnumerable<Quote>>> GetAllQuotes()
-    //{
-    //    return await _context.Quotes.ToListAsync();
-    //}
-
     [HttpGet("get/{id}")]
     public async Task<ActionResult<QuoteResponse>> GetQuoteById(Guid id)
     {
@@ -148,6 +142,4 @@ public class QuoteController(AppDbContext db) : ControllerBase
 
         return Ok(quote);
     }
-
-
 }
