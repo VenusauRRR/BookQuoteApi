@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-error',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './error.css',
 })
 export class Error {
+  constructor(private router: Router) { }
 
+  tryAgain(): void {
+    this.router.navigate(['auth/login']);
+  }
 }

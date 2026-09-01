@@ -31,8 +31,6 @@ export class Navbar {
     this.themeChanged.emit(this.isDarkMode);
 
     const nav = document.querySelector('nav');
-    const footer = document.querySelector('footer');
-    const btnGroup = document.getElementsByName('btnGroup');
 
     document.documentElement.setAttribute(
       'data-bs-theme',
@@ -41,10 +39,8 @@ export class Navbar {
 
     if (this.isDarkMode) {
       nav?.classList.remove('bg-warning');
-      footer?.classList.remove('bg-warning');
     } else {
       nav?.classList.add('bg-warning');
-      footer?.classList.add('bg-warning');
     }
   }
 
