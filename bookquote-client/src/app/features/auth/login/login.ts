@@ -33,6 +33,7 @@ export class Login {
       },
       error: (error) => {
         console.error('Error logging in user:', error);
+        this.router.navigate(['/error']);
       },
     });
   };

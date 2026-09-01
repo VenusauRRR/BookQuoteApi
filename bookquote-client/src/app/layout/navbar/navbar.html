@@ -3,37 +3,21 @@
 <nav class="navbar navbar-expand-lg bg-warning">
   <div class="container">
 
+    <!--Logo-->
     <a class="navbar-brand" routerLink="/">
       BookQuote
     </a>
 
-    <div class="d-flex align-items-center gap-2 d-lg-none">
-      <button type="button" class="btn"
-                (click)="toggleTheme()">
-          @if (isDarkMode) {
-          <i class="fa-solid fa-sun text-warning"></i>
-          } @else {
-          <i class="fa-solid fa-moon"></i>
-          }
-      </button>
 
-      <button class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#mainNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-
-
-    <div class="collapse navbar-collapse"
+    <!--navigation links-->
+    <div class="collapse navbar-collapse order-lg-0 order-2"
          id="mainNavbar">
 
       <ul class="navbar-nav me-auto">
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/" data-bs-toggle="collapse"
-   data-bs-target="#mainNavbar">
+             data-bs-target="#mainNavbar">
             <i class="fa-solid fa-house"></i>
             Home
           </a>
@@ -41,7 +25,7 @@
         @if (authService.isLoggedIn()){
         <li class="nav-item">
           <a class="nav-link" routerLink="/books" data-bs-toggle="collapse"
-   data-bs-target="#mainNavbar">
+             data-bs-target="#mainNavbar">
             <i class="fa-solid fa-book"></i>
             Books
           </a>
@@ -49,20 +33,20 @@
 
         <li class="nav-item">
           <a class="nav-link" routerLink="/quotes" data-bs-toggle="collapse"
-   data-bs-target="#mainNavbar">
+             data-bs-target="#mainNavbar">
             <i class="fa-solid fa-quote-left"></i>
             Quotes
           </a>
         </li>
         }
-
-
       </ul>
+    </div>
 
-      <div class="d-flex gap-2">
-        <!-- Theme button -->
-        <button type="button"
-                class="btn d-none d-lg-block"
+
+    <!--Always shown icons-->
+    <div class="d-flex align-items-center gap-1 order-lg-1 order-1">
+      <div>
+        <button type="button" class="btn"
                 (click)="toggleTheme()">
           @if (isDarkMode) {
           <i class="fa-solid fa-sun text-warning"></i>
@@ -71,30 +55,38 @@
           }
         </button>
 
-
         @if (authService.isLoggedIn()){
         <button type="button"
                 class="btn"
                 (click)="logout()">
           <i class="fa-solid fa-right-from-bracket"></i>
-          Logout
         </button>
         } @else {
         <a routerLink="/auth/login"
-           class="btn btn-warning">
+           class="btn">
           <i class="fa-solid fa-right-to-bracket"></i>
-          Login
         </a>
 
         <a routerLink="/auth/register"
-           class="btn btn-primary">
+           class="btn">
           <i class="fa-solid fa-user-plus"></i>
-          Register
         </a>
         }
-
-
       </div>
+
+
+
+      <!--hamburger menu-->
+      <div>
+
+        <button class="navbar-toggler d-lg-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
 
     </div>
 

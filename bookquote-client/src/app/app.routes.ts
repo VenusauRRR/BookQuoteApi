@@ -6,6 +6,7 @@ import { RegisterUser } from './features/auth/register-user/register-user';
 import { QuoteList } from './features/quotes/quote-list/quote-list';
 import { QuoteForm } from './features/quotes/quote-form/quote-form';
 import { Home } from './features/home/home';
+import { Error } from './layout/error/error';
 
 export const routes: Routes = [
   {
@@ -46,6 +47,6 @@ export const routes: Routes = [
   },
   {
     path: 'error',
-    component: QuoteForm,
+    component: Error,
   }
 ];
