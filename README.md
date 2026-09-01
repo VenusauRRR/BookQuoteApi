@@ -137,10 +137,10 @@ Protected endpoints require a valid JWT token.
 - **Backend (Azure):** [BookQuote API](https://bookquoteapi-ewchevf8hphxevcf.swedencentral-01.azurewebsites.net)
 
 ## Screenshots
-<img src="BQ-books-lg-dark.png" size="200x300" alt="Books in large screen dark mode" />
-<img src="BQ-myQuotes-lg-light.png" size="300x200" alt="My quotes in large screen light mode" />
-<img src="BQ-myQuotes-s-dark.png" size="200x300" alt="My quotes in small screen dark mode" />
-<img src="BQ-register-s-light.png" size="200x300" alt="Registration in small screen light mode" />
+<img src="BQ-myQuotes-lg-light.png" height="150" alt="My quotes in large screen light mode" />
+<img src="BQ-books-lg-dark.png" height="150" alt="Books in large screen dark mode" />
+<img src="BQ-myQuotes-s-dark.png" height="150" alt="My quotes in small screen dark mode" />
+<img src="BQ-register-s-light.png" height="150" alt="Registration in small screen light mode" />
 
 
 ## Future Improvements
