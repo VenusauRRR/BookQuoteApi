@@ -29,7 +29,7 @@ export class Login {
       next: (result) => {
         console.log('User logged in, Token:', result);
         localStorage.setItem('token', result.token);
-        this.router.navigate(['/books']);
+        this.router.navigate(['']);
       },
       error: (error) => {
         console.error('Error logging in user:', error);
