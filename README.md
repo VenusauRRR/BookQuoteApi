@@ -4,7 +4,7 @@ Welcome to my website for managing books & quotes!
 
 ## Overview
 
-This project is a fullstack CRUD webapplication where the users can register, login, manage books and create their own quotes.
+This project is a fullstack CRUD webapplication where the users can register, login, manage both books and quotes, and create their own quotes.
 
 The application consists of an Angular frontend and a .NET Web API backend. Authentication is handled using JWT.
 
