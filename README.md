@@ -1,84 +1,148 @@
-# ***Electrical and basic programming for embedded systems  IoT25***
+# ***BookQuote***
 
-Welcome to my individual assignment for Electrical and basic programming for embedded systems (IoT25)!
+Welcome to my website for managing books & quotes!
 
-## Background
+## Overview
 
-This project is an assignment for the course **Electrical and basic programming for embedded systems** under my education **Software development, embedded systems and IoT** in Yrkehögskolan Nackademin Solna, Sweden. This project controls LEDs on an Arduino using buttons, potentiometers, and a rotary encoder with AVR C and non-blocking timing.
+This project is a fullstack CRUD webapplication where the users can register, login, manage books and create their own quotes.
 
-## Project Descriptions
-
-This project is an embedded systems assignment where an Arduino-based circuit controls LEDs using buttons, potentiometers, and a rotary encoder.
-The program is written in pure C using register manipulation, without relying on Arduino helper functions for logic control. Timing and event handling are implemented using non-blocking techniques (e.g., millis()-based timing) rather than busy-wait loops.
-
-The system demonstrates interaction between multiple hardware components and different control inputs while maintaining responsive, non-blocking behavior.
-
-## Hardwares
-- Arduino Microcontroller
-- 4 x Leds (red, green, blue, white)
-- 1 x RGB
-- 1 x rotary encoder
-- 2 x push buttons
-- 2 x potentiometers
-- 7 x 220 Ohm resistors
+The application consists of an Angular frontend and a .NET Web API backend. Authentication is handled using JWT.
 
 ## Features
 
-1. Mode 1: Default
-    - Leds: all blink very 250ms
-    - RGB: off
-    - Potentiometer 1 adds on time interval when LEDs blink in general
-2. Mode 2: select color from RGB and control relevant Led
-    - twist rotary encoder -> change RGB color (off/red/green/blue/white)
-    - press rotary switch -> confirm selected color from RGB (e.g. RGB-red) and disable rotary encoder changing RGB color
-    - If selected RGB color = off, LEDs blink in sequence
-    - Potentiometer 2 adds on time interval when LEDs blink in sequence
-    - press push button 1 -> control the relevant LED (e.g. red) on/off
-    - press push button 2 -> reset the relevant LED (e.g. red) to blinking state
-3. Mode 3: control from UART terminal
-    - "disable X": keep LED color X OFF
-    - "enable X": restore LED color X default state (blinking)
-    - "toggle X": toggle LED color X (ON)
-    - *** X: red/green/blue/white
+- User registration and login
+- JWT-based authentication
+- Password hashing with BCrypt
+- CRUD operations for books
+- CRUD operations for quotes
+- User-specific quotes
+- Protected API endpoints
+- Responsive UI
+- Light/dark theme
 
-<img src="image_wokwi.png" alt="wokwi diagram" width="300" />
-<img src="image_arduino.jpg" alt="arduino assembly" width="300" />
+## Tech Stack
 
+### Frontend
+- Angular 20
+- Bootstrap 5.3
+- Font Awesome 7
+
+### Backend
+- C#
+- .NET 9
+- ASP.NET Core Web API
+- Entity Framework Core 9
+- SQLite
+
+### Authentication
+- JWT
+- BCrypt
+
+## Architecture
+
+```text
+Angular Frontend
+       │
+       │ HTTP / JSON
+       ▼
+ASP.NET Core Web API
+       │
+       ▼
+Entity Framework Core
+       │
+       ▼
+SQLite
+```
 
 ## Project Structure
+```text
+BookQuote/
+├── bookquote-client/      # Angular frontend
+│   └── src/
+│       ├── directives/
+│       ├── features/
+│       ├── interceptors/
+│       ├── layouts/
+│       ├── models/
+│       └── services/
+│
+├── BookQuoteApi/          # .NET 9 backend
+│   ├── Controllers/
+│   ├── Data/
+│   ├── DTOs/
+│   ├── Migrations/
+│   └── Models/
+│
+└── README.md
 ```
-project
-    +---build               # all .d .o .hex 
-    +---include             # all .h
-    +---src                 # all .c 
-    ├───makefile
-    ├───diagram.json
-    \───wokwi.toml              
-```
 
-## Requirement
-1. avr-gcc (AVR compiler) https://github.com/ZakKemble/avr-gcc-build/releases/
-
-2. Makefile
-
-```bash
-pacman -S --needed base-devel mingw-w64-x86_64-toolchain
-```
-
-3. Wokwi Extension
+## Requirements
+- .NET 9 SDK
+- Node.js 24+
+- npm 11+
 
 ## Installation
+
 ```bash
 # Clone the repository
-git clone https://github.com/VenusauRRR/Blink-hell-Ellara.git
+git clone https://github.com/VenusauRRR/BookQuoteApi.git
 
-# Change directory
-cd repo
-
-# compile the project
-make
-
-# download the project to arduino
-make flash
-
+# Change directory: Backend
+cd BookQuoteApi
+dotnet restore
+dotnet tool restore
+dotnet ef database update
+dotnet run
 ```
+Open a new terminal to run the frontend:
+```bash
+# Change directory: Frontend
+cd bookquote-client
+npm install
+npm start
+```
+
+## API
+
+The backend exposes RESTful endpoints for authentication, books, and quotes.
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/users/register` | Register a user |
+| POST | `/api/users/login` | Login |
+| GET | `/api/books` | Get all books |
+| POST | `/api/books/add` | Create a book |
+| PUT | `/api/books/update/{id}` | Update a book |
+| DELETE | `/api/books/delete/{id}` | Delete a book |
+| GET | `/api/quotes/get-my-quotes` | Get user's quotes |
+| POST | `/api/quotes/add` | Create a quote |
+| PUT | `/api/quotes/update/{id}` | Update a quote |
+| DELETE | `/api/quotes/delete/{id}` | Delete a quote |
+
+## Configuration
+The JWT signing key is stored using .NET User Secrets during local development and is not committed to the repository.
+```bash
+dotnet user-secrets init
+dotnet user-secrets set "Jwt:Key" "your-secret-key"
+```
+
+## Authentication
+The application uses JWT-based authentication. Users receive a JWT after successful login, which is included in authenticated API requests.
+
+Protected endpoints require a valid JWT token.
+
+## Deployment
+
+- **Frontend (Vercel):** [BookQuote](https://book-quote-client.vercel.app)
+- **Backend (Azure):** [BookQuote API](https://bookquoteapi-ewchevf8hphxevcf.swedencentral-01.azurewebsites.net)
+
+## Screenshots
+<img src="BQ-books-lg-dark.png" size="200x300" alt="Books in large screen dark mode" />
+<img src="BQ-myQuotes-lg-light.png" size="300x200" alt="My quotes in large screen light mode" />
+<img src="BQ-myQuotes-s-dark.png" size="200x300" alt="My quotes in small screen dark mode" />
+<img src="BQ-register-s-light.png" size="200x300" alt="Registration in small screen light mode" />
+
+
+## Future Improvements
+- Add unit and integration tests
+- Improve form validation
