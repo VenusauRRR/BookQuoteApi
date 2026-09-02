@@ -67,12 +67,21 @@ public class BookController(AppDbContext db):ControllerBase
             return BadRequest();
         }
 
-        book.UpdatedAt = DateTime.UtcNow;
-        _context.Entry(book).State = EntityState.Modified;
+        var existingBook = await _context.Books.FindAsync(id);
+
+        if (existingBook == null)
+        {
+            return NotFound();
+        }
+
+        existingBook.Title = book.Title;
+        existingBook.Author = book.Author;
+        existingBook.PublicationDate = book.PublicationDate;
+        existingBook.UpdatedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
 
-        return Ok(book);
+        return Ok(existingBook);
     }
 
     [HttpDelete("delete/{id}")]
